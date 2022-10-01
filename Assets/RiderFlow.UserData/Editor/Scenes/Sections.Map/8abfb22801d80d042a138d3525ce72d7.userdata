@@ -1,0 +1,12 @@
+{
+  "GlobalObjectId_V1-2-8abfb22801d80d042a138d3525ce72d7-1269852030-0": {
+    "GameObjectId": "GlobalObjectId_V1-2-8abfb22801d80d042a138d3525ce72d7-1269852030-0",
+    "SectionColorRed": 0.0,
+    "SectionColorGreen": 0.77,
+    "SectionColorBlue": 0.77,
+    "SectionAltColorRed": 0.0,
+    "SectionAltColorGreen": 0.77,
+    "SectionAltColorBlue": 0.77,
+    "RemoveSectionDuringBuild": true
+  }
+}
