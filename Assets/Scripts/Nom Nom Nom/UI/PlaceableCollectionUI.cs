@@ -64,7 +64,7 @@ namespace Nom_Nom_Nom.UI
                     return;
                 }
 
-                viewPair.Value.SetActive(viewPair.Key.Contains(filter));
+                viewPair.Value.SetActive(viewPair.Key.ToLower().Contains(filter.ToLower()));
             }
         }
     }

@@ -1,7 +1,9 @@
 ﻿using System;
 using Nom_Nom_Nom.Placeable;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 namespace Nom_Nom_Nom.Controller
 {
@@ -9,11 +11,16 @@ namespace Nom_Nom_Nom.Controller
     {
         [SerializeField] private DragAndDropControllerData data;
         [SerializeField] private Camera cam;
+
+        [ShowInInspector, ReadOnly, BoxGroup("Status")]
         private PlaceableObject placeableObjectToMove;
 
         [SerializeField] private UnityEvent onDragStarted;
         [SerializeField] private UnityEvent onDragEnded;
         [SerializeField] private UnityEvent onDragCancelled;
+
+        [ShowInInspector, ReadOnly, BoxGroup("Status")]
+        private Vector2 mousePosition;
 
         private void OnEnable()
         {
@@ -32,24 +39,28 @@ namespace Nom_Nom_Nom.Controller
             }
         }
 
-        private void Update()
+        public void UpdateMousePosition(InputAction.CallbackContext context)
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                //drop the object
-                controllerData.NotifyNoObjectToHandle();
-                onDragEnded.Invoke();
-                placeableObjectToMove.NotifyDragDone();
-                placeableObjectToMove = null;
-                enabled = false;
-            }
+            mousePosition = context.ReadValue<Vector2>();
+        }
+
+        public void Spawn(InputAction.CallbackContext context)
+        {
+            if (!enabled)
+                return;
+
+
+            placeableObjectToMove.NotifyDragDone();
+            placeableObjectToMove = null;
+            controllerData.NotifyNoObjectToHandle();
+            onDragEnded.Invoke();
         }
 
         private void FixedUpdate()
         {
             if (!placeableObjectToMove)
                 return;
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            Ray ray = cam.ScreenPointToRay(mousePosition);
             if (!Physics.Raycast(ray, out RaycastHit hit, float.PositiveInfinity, data.GroundLayerMask))
                 return;
 

@@ -1,4 +1,6 @@
-﻿using Nom_Nom_Nom.Placeable;
+﻿using System;
+using Nom_Nom_Nom.Placeable;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Nom_Nom_Nom.Controller
@@ -6,17 +8,17 @@ namespace Nom_Nom_Nom.Controller
     public class PlaceableObjectUIController : PlaceableObjectAssignable
     {
         [SerializeField] private ObjectPlacementControllerData controllerData;
-        private PlaceableObject placeableObject;
-
+        [ReadOnly,SerializeField] private int placeableObjectID = -1;
 
         public void PlaceObject()
         {
-            controllerData.NotifyNewObjectToHandle(placeableObject);
+            Debug.Assert(placeableObjectID != -1, "the id wasn't properly initialized");
+            controllerData.NotifyNewObjectToHandle(placeableObjectID);
         }
 
         public override void AssignPlaceableObjectDate(PlaceableObjectData obj)
         {
-            placeableObject = obj.PlaceableObject;
+            placeableObjectID = obj.PlaceableObject.PoolId;
         }
     }
 }

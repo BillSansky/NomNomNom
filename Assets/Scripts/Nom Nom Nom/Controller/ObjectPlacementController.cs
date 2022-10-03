@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Nom_Nom_Nom.Controller
 {
     public class ObjectPlacementController : AbstractObjectPlacementController
     {
-        private void Update()
+        public void CancelPlacement(InputAction.CallbackContext context)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
+            if (enabled)
                 controllerData.CancelCurrentObject();
-            }
         }
     }
 }

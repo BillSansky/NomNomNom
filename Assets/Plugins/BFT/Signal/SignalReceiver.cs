@@ -5,12 +5,6 @@ using UnityEngine.Events;
 
 namespace Plugins.BFT.Signal
 {
-    [CreateAssetMenu(fileName = "Signal", menuName = "BFT/Signal")]
-    public class SignalType : ScriptableObject
-    {
-    }
-
-
     public class SignalReceiver : MonoBehaviour
     {
         [Serializable]

@@ -2,7 +2,7 @@
 
 namespace Nom_Nom_Nom.Controller
 {
-    [CreateAssetMenu(fileName = "Drag And Drop Controller Data", menuName = "Drag And Drop Controller Data")]
+    [CreateAssetMenu(fileName = "Drag And Drop Controller Data", menuName = "Nom Nom Nom/Controller/Drag And Drop Controller Data")]
     public class DragAndDropControllerData : ScriptableObject
     {
         [SerializeField] private float groundOffset;

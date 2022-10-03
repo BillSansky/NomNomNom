@@ -1,8 +1,10 @@
 ﻿#if UNITY_EDITOR
+using System.IO;
 using UnityEditor;
-#endif
+using MonKey.Extensions;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 
 namespace Nom_Nom_Nom.Utility
 {
@@ -14,23 +16,36 @@ namespace Nom_Nom_Nom.Utility
 
         public Transform photographyTransform;
 
-#if UNITY_EDITOR
+        public TextureFormat formatToExportTo = TextureFormat.RGB24;
 
         [Button(ButtonSizes.Medium)]
-        public void Photograph(GameObject go)
+        public Texture2D Photograph(GameObject go)
         {
-            renderingCamera.targetTexture = renderTexture;
-            renderingCamera.Render();
+            string name = go.name;
 
-            Texture2D photo = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.RGB24, false);
-            // ReadPixels looks at the active RenderTexture.
+            go = Instantiate(go, photographyTransform, false);
+            go.transform.Reset();
+            renderingCamera.Render();
+            var prevActive = RenderTexture.active;
             RenderTexture.active = renderTexture;
+
+            Texture2D photo = new Texture2D(renderTexture.width, renderTexture.height, formatToExportTo, false);
             photo.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
             photo.Apply();
-            RenderTexture.active = null;
-            string path = EditorUtility.SaveFilePanel("Save Texture", "Assets", go.name + "_photo", ".png");
-            AssetDatabase.CreateAsset(photo, path);
+
+            RenderTexture.active = prevActive;
+
+            string path = AssetDatabase.GetAssetPath(renderTexture).Replace(".renderTexture", ".png")
+                .Replace(renderTexture.name, name + "_photo");
+
+            File.WriteAllBytes(path, photo.EncodeToPNG());
+            AssetDatabase.Refresh();
+            AssetDatabase.SaveAssets();
+
+            DestroyImmediate(go);
+            return AssetDatabase.LoadAssetAtPath<Texture2D>(path);
         }
-#endif
     }
 }
+
+#endif

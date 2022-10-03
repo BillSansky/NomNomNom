@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0efd3b2a6581c67478a45fc2b5297b33, type: 3}
-  m_Name: Eadible Cube
+  m_Name: Poisonous Cube
   m_EditorClassIdentifier: 
-  objectName: Edible Cube
-  placeableObject: {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
-  uiRepresentation: {fileID: 0}
+  objectName: Poisonous
+  placeableObject: {fileID: 7585968697716178521, guid: 10a2bf15b4c20694f8a3dc5770e304b6, type: 3}
+  uiRepresentation: {fileID: 2800000, guid: c24664350fef9bc48b3c2b8c3c830701, type: 3}

@@ -4,6 +4,8 @@ using UnityEngine.Events;
 
 namespace Nom_Nom_Nom.Controller
 {
+    [CreateAssetMenu(fileName = "Placement Controller Data",
+        menuName = "Nom Nom Nom/Controller/Placement Controller Data")]
     public class ObjectPlacementControllerData : ScriptableObject
     {
         [SerializeField] private UnityEvent onNewObjectHandled;
@@ -11,29 +13,42 @@ namespace Nom_Nom_Nom.Controller
 
         public UnityEvent OnNewObjectHandled => onNewObjectHandled;
         public UnityEvent OnNoObjectHandled => onNoObjectHandled;
-    
+
         private PlaceableObjectPool placeableObjectPool;
 
         private PlaceableObject currentHandledObject;
 
         public PlaceableObject CurrentHandledObject => currentHandledObject;
 
-   
+        public PlaceableObjectPool ObjectPool => placeableObjectPool;
+
 
         public void AssignObjectPool(PlaceableObjectPool pool)
         {
             placeableObjectPool = pool;
         }
 
-        public void NotifyNewObjectToHandle(PlaceableObject obj)
+        public void NotifyNewObjectToHandle(int objID)
         {
-            currentHandledObject = placeableObjectPool.CreateNewPlaceable(obj);
+            if (!ObjectPool)
+            {
+                Debug.LogError("The placeable pool was not assigned, the placement cannot be done", this);
+                return;
+            }
+
+            currentHandledObject = ObjectPool.CreateNewPlaceable(objID);
             OnNewObjectHandled.Invoke();
         }
 
         public void CancelCurrentObject()
         {
-            placeableObjectPool.PoolExistingPlaceable(currentHandledObject);
+            if (!ObjectPool)
+            {
+                Debug.LogError("The placeable pool was not assigned, the placement cancelling cannot be done", this);
+                return;
+            }
+
+            ObjectPool.PoolExistingPlaceable(currentHandledObject);
             OnNoObjectHandled.Invoke();
         }
 
