@@ -10,6 +10,8 @@ namespace Nom_Nom_Nom.Path_Finding
         [SerializeField] private float width = 10;
         [SerializeField] private float height = 10;
 
+        private Vector3 currentPoint;
+
         private void OnDrawGizmosSelected()
         {
             squareCenter = Handles.PositionHandle(squareCenter, Quaternion.identity);
@@ -23,13 +25,18 @@ namespace Nom_Nom_Nom.Path_Finding
                 Color.green);
         }
 
-        public override Vector3 GetNextPoint()
+        public override Vector3 GetCurrentPoint()
         {
-            return squareCenter + new Vector3(UnityEngine.Random.Range(-height, height), 0,
+            return currentPoint;
+        }
+
+        public override void GetNextPoint()
+        {
+            currentPoint = squareCenter + new Vector3(UnityEngine.Random.Range(-height, height), 0,
                 UnityEngine.Random.Range(-width, width));
         }
 
-        public override bool HasPointsLeft()
+        public override bool HasNextPoint()
         {
             return true;
         }

@@ -12,7 +12,9 @@ namespace Nom_Nom_Nom.UI
     {
         [AssetsOnly] [SerializeField] private GameObject placeableObjectUI;
 
-        [NonSerialized] private Dictionary<string, GameObject> placeableObjectViewsByName;
+        [ShowInInspector, ReadOnly, BoxGroup("Status")]
+        private Dictionary<string, GameObject> placeableObjectViewsByName;
+
         [SerializeField] private Transform uiViewsParent;
 
         [SerializeField] private UnityEvent onShowUI;
@@ -46,7 +48,8 @@ namespace Nom_Nom_Nom.UI
 
                 var view = Instantiate(placeableObjectUI, uiViewsParent);
                 placeableObjectViewsByName.Add(o.ObjectName, view);
-                var assignables = placeableObjectUI.GetComponentsInChildren<PlaceableObjectAssignable>();
+                view.name = o.ObjectName;
+                var assignables = view.GetComponentsInChildren<PlaceableObjectAssignable>();
                 foreach (var assignable in assignables)
                 {
                     assignable.AssignPlaceableObjectDate(o);
@@ -61,10 +64,11 @@ namespace Nom_Nom_Nom.UI
                 if (filter == "")
                 {
                     viewPair.Value.SetActive(true);
-                    return;
+                    continue;
                 }
 
-                viewPair.Value.SetActive(viewPair.Key.ToLower().Contains(filter.ToLower()));
+                bool match = viewPair.Key.ToLower().Contains(filter.ToLower());
+                viewPair.Value.SetActive(match);
             }
         }
     }

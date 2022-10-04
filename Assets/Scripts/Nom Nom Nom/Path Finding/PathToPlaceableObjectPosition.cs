@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Nom_Nom_Nom.Controller;
 using Nom_Nom_Nom.Placeable;
@@ -10,48 +11,74 @@ namespace Nom_Nom_Nom.Path_Finding
 {
     public class PathToPlaceableObjectPosition : AbstractPathProvider
     {
-        [SerializeField] private ObjectPlacementController controller;
+        [SerializeField] private ObjectPlacementControllerData controller;
 
         private PlaceableObjectPool pool;
 
         [AssetList] [SerializeField] private List<PlaceableObject> archetypePlaceableToFollow;
 
-        private PlaceableObject[] placeableObjectShortlist;
+        [ShowInInspector, ReadOnly, BoxGroup("Status")]
+        private List<PlaceableObject> placeableObjectShortlist = new List<PlaceableObject>();
+
+        [ShowInInspector, ReadOnly, BoxGroup("Status")]
         private PlaceableObject placeableObjectToReach;
+
+        [SerializeField] private bool alwaysPickNearestToTransform;
+
+        [ShowIf("alwaysPickNearestToTransform"), SerializeField]
+        private Transform refTransform;
 
         void OnEnable()
         {
+            pool = controller.ObjectPool;
             pool.OnNewObjectCreated.AddListener(RegeneratePlaceablePositions);
-            pool.OnNewObjectCreated.AddListener(RegeneratePlaceablePositions);
+            pool.OnNewObjectPooled.AddListener(RegeneratePlaceablePositions);
+            RegeneratePlaceablePositions();
         }
 
         private void OnDisable()
         {
             pool.OnNewObjectCreated.RemoveListener(RegeneratePlaceablePositions);
-            pool.OnNewObjectCreated.RemoveListener(RegeneratePlaceablePositions);
+            pool.OnNewObjectPooled.RemoveListener(RegeneratePlaceablePositions);
         }
 
         private void RegeneratePlaceablePositions()
         {
             placeableObjectShortlist =
                 pool.ActiveObjects.Where(_ => archetypePlaceableToFollow.Any(arch => arch.PoolId == _.PoolId))
-                    .ToArray();
+                    .ToList();
         }
 
 
-        public override Vector3 GetNextPoint()
+        public override Vector3 GetCurrentPoint()
         {
-            if (placeableObjectShortlist.Length == 0)
-                placeableObjectToReach = null;
-            placeableObjectToReach =
-                placeableObjectShortlist[UnityEngine.Random.Range(0, placeableObjectShortlist.Length)];
-
             return placeableObjectToReach.transform.position;
         }
 
-        public override bool HasPointsLeft()
+        public override void GetNextPoint()
         {
-            return placeableObjectShortlist.Length > 0;
+            if (placeableObjectShortlist.Count == 0)
+            {
+                placeableObjectToReach = null;
+                return;
+            }
+
+            if (alwaysPickNearestToTransform)
+            {
+                placeableObjectToReach = placeableObjectShortlist.Where(_=>_.gameObject.activeInHierarchy)
+                    .OrderBy(_ => (_.transform.position - refTransform.position).sqrMagnitude).First();
+            }
+            else
+            {
+                placeableObjectToReach =
+                    placeableObjectShortlist[UnityEngine.Random.Range(0, placeableObjectShortlist.Count)];
+                placeableObjectShortlist.Remove(placeableObjectToReach);
+            }
+        }
+
+        public override bool HasNextPoint()
+        {
+            return placeableObjectShortlist is { Count: > 0 };
         }
     }
 }

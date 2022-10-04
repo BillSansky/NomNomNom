@@ -15,12 +15,39 @@ namespace Nom_Nom_Nom.Trigger
 
         [SerializeField] [AssetList] private List<PlaceableObject> shortListTypesToDetect;
 
+        [SerializeField] private bool useTrigger = false;
+
+        [SerializeField] private bool preventRedetection = true;
+        private PlaceableObject lastDetected;
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!useTrigger || !other.attachedRigidbody)
+                return;
+
+            DetectionLogic(other.attachedRigidbody);
+        }
+
+
         private void OnCollisionEnter(Collision collision)
         {
-            var placeable = collision.body.GetComponent<PlaceableObject>();
+            if (useTrigger)
+                return;
+
+            DetectionLogic(collision.body);
+        }
+
+        private void DetectionLogic(Component collidee)
+        {
+            var placeable = collidee.GetComponent<PlaceableObject>();
 
             if (!placeable)
                 return;
+
+            if (preventRedetection && lastDetected == placeable)
+                return;
+
+            lastDetected = placeable;
 
             if (shortListTypesToDetect.Count == 0 || shortListTypesToDetect.Any(_ => _.PoolId == placeable.PoolId))
             {

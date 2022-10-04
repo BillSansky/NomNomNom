@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6008051287738955492
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1139176645138844558, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5dc03e3c538d76b488657aa9ac2ce85b, type: 2}
+    - target: {fileID: 3083545227962884699, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5dc03e3c538d76b488657aa9ac2ce85b, type: 2}
+    - target: {fileID: 3083545228887258013, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083545228887258013, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083545228887258013, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083545228887258013, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083545228887258013, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083545228887258013, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083545228887258013, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083545228887258013, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083545228887258013, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083545228887258013, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083545228887258013, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083545228887258014, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+      propertyPath: m_Name
+      value: Smart Cube Eater
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206934625164135523, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+      propertyPath: refTransform
+      value: 
+      objectReference: {fileID: 8766844759979726009}
+    - target: {fileID: 3206934625164135523, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+      propertyPath: alwaysPickNearestToTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206934625164135523, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+      propertyPath: archetypePlaceableToFollow.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206934625164135523, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+      propertyPath: archetypePlaceableToFollow.Array.data[1]
+      value: 
+      objectReference: {fileID: 8509613031490187923, guid: c9cc2339dbc10d94687f757cfdbdf30a, type: 3}
+    - target: {fileID: 8234753783107752332, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+      propertyPath: toInstantiate
+      value: 
+      objectReference: {fileID: 2442755915934788247, guid: 078791c1cb106e74494a9c317208f9d8, type: 3}
+    - target: {fileID: 9058159406915968174, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5dc03e3c538d76b488657aa9ac2ce85b, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+--- !u!4 &8766844759979726009 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3083545227962884701, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+  m_PrefabInstance: {fileID: 6008051287738955492}
+  m_PrefabAsset: {fileID: 0}

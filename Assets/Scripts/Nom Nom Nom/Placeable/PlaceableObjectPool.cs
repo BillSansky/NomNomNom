@@ -41,6 +41,8 @@ namespace Nom_Nom_Nom.Placeable
                 for (int i = 0; i < maxPooledObjects; i++)
                 {
                     var newObj = Instantiate(placeableObjet.PlaceableObject, transform);
+                    PlaceVeryFar(newObj);
+
                     newObj.PoolId = id;
                     newObj.NotifyPooled();
 
@@ -70,6 +72,7 @@ namespace Nom_Nom_Nom.Placeable
             }
 
             var toSpawn = list[0];
+            PlaceVeryFar(toSpawn);
             list.Remove(toSpawn);
             activeObjects.Add(toSpawn);
             toSpawn.NotifySpawned(this);
@@ -80,11 +83,18 @@ namespace Nom_Nom_Nom.Placeable
 
         public void PoolExistingPlaceable(PlaceableObject obj)
         {
+            PlaceVeryFar(obj);
             obj.OnPlaceableDestroyed.RemoveListener(PoolExistingPlaceable);
             activeObjects.Remove(obj);
             pooledObjects[obj.PoolId].Add(obj);
             obj.NotifyPooled();
             OnNewObjectPooled.Invoke();
+        }
+
+        private static void PlaceVeryFar(PlaceableObject obj)
+        {
+            //put very far so it doesnt show for a frame in front
+            obj.transform.position = Vector3.one * 9999;
         }
     }
 }

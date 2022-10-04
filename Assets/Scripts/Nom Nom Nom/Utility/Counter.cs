@@ -6,6 +6,7 @@ namespace Nom_Nom_Nom.Utility
     public class Counter : MonoBehaviour
     {
         [SerializeField] private int countTo;
+        [SerializeField] private int initialCount;
 
         private int currentCount;
 
@@ -13,16 +14,31 @@ namespace Nom_Nom_Nom.Utility
 
         public void OnEnable()
         {
-            currentCount = 0;
+            ResetCount();
+        }
+
+        public void ResetCount()
+        {
+            currentCount = initialCount;
         }
 
         public void Increment()
         {
             currentCount++;
-            if (currentCount > countTo)
+
+            if (currentCount == countTo)
             {
                 onCountDone.Invoke();
-                currentCount = 0;
+            }
+        }
+
+        public void Decrement()
+        {
+            currentCount--;
+
+            if (currentCount == countTo)
+            {
+                onCountDone.Invoke();
             }
         }
     }

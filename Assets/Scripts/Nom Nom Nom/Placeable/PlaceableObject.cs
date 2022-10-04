@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,6 +11,7 @@ namespace Nom_Nom_Nom.Placeable
     [RequireComponent(typeof(Rigidbody))]
     public class PlaceableObject : MonoBehaviour
     {
+        [ShowInInspector, BoxGroup("Status"), ReadOnly]
         private int poolId = -1;
 
         public int PoolId
@@ -27,7 +29,7 @@ namespace Nom_Nom_Nom.Placeable
         public PlaceableObjectEvent OnPlaceableCreated;
 
         private PlaceableObjectPool poolThatSpawnedMe;
-        
+
         void Awake()
         {
             rb = GetComponent<Rigidbody>();
@@ -67,6 +69,4 @@ namespace Nom_Nom_Nom.Placeable
             rb.isKinematic = true;
         }
     }
-
-  
 }

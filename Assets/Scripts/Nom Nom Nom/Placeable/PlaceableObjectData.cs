@@ -1,3 +1,4 @@
+using System;
 using Nom_Nom_Nom.Utility;
 using Sirenix.OdinInspector;
 #if UNITY_EDITOR
@@ -13,6 +14,7 @@ namespace Nom_Nom_Nom.Placeable
     public class PlaceableObjectData : ScriptableObject
     {
         [SerializeField] private string objectName;
+        
         public string ObjectName => objectName;
 
         [SerializeField] [AssetsOnly] [AssetList]

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0efd3b2a6581c67478a45fc2b5297b33, type: 3}
+  m_Name: Smart Cube Eater
+  m_EditorClassIdentifier: 
+  objectName: Smart Cube Eater
+  placeableObject: {fileID: 8766844759025042811, guid: d749ed23a981583469c9a3802d1382aa, type: 3}
+  uiRepresentation: {fileID: 2800000, guid: 0f2cacf65a8e458429e17ce99ac759e0, type: 3}

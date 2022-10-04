@@ -8,7 +8,8 @@ namespace Nom_Nom_Nom.Path_Finding
 {
     public abstract class AbstractPathProvider : MonoBehaviour
     {
-        public abstract Vector3 GetNextPoint();
-        public abstract bool HasPointsLeft();
+        public abstract Vector3 GetCurrentPoint();
+        public abstract void GetNextPoint();
+        public abstract bool HasNextPoint();
     }
 }
