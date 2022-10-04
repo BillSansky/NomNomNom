@@ -19,7 +19,7 @@ namespace Nom_Nom_Nom.Utility
         public TextureFormat formatToExportTo = TextureFormat.RGB24;
 
         [Button(ButtonSizes.Medium)]
-        public Texture2D Photograph(GameObject go)
+        public Texture2D Photograph(GameObject go,string extraName="")
         {
             string name = go.name;
 
@@ -36,7 +36,7 @@ namespace Nom_Nom_Nom.Utility
             RenderTexture.active = prevActive;
 
             string path = AssetDatabase.GetAssetPath(renderTexture).Replace(".renderTexture", ".png")
-                .Replace(renderTexture.name, name + "_photo");
+                .Replace(renderTexture.name, name + extraName +"_photo");
 
             File.WriteAllBytes(path, photo.EncodeToPNG());
             AssetDatabase.Refresh();

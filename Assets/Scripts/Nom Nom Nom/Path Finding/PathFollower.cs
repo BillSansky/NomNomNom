@@ -25,8 +25,7 @@ namespace Nom_Nom_Nom.Path_Finding
 
         [SerializeField] private bool changeTargetBasedOnProximity;
 
-        [ShowIf("changeTargetBasedOnProximity")] [SerializeField]
-        private float distanceTolerance = 1f;
+        [SerializeField] private float distanceTolerance = 1f;
 
         private void Awake()
         {
@@ -86,6 +85,11 @@ namespace Nom_Nom_Nom.Path_Finding
 
             Vector3 nextPosition = pathProvider.GetCurrentPointPosition();
 
+            //ignore cubes that are likely falling for now (+ some safety amount)
+            if (nextPosition.y > rigidBody.position.y + 1f)
+                return;
+
+
             Vector3 distance = nextPosition - rigidBody.position;
             Vector3 speedToAdd = (distance.normalized *
                                   (Mathf.Min(speed * Time.deltaTime, distance.magnitude)));
@@ -93,15 +97,15 @@ namespace Nom_Nom_Nom.Path_Finding
             Vector3 lookAt = nextPosition + distance;
             lookAt.y = transform.position.y;
             rigidBody.transform.LookAt(lookAt, Vector3.up);
-            //allow to go down, but not up
-            speedToAdd.y = Mathf.Min(speedToAdd.y, 0);
             rigidBody.position += speedToAdd;
 
-            if (changeTargetBasedOnProximity &&
-                (rigidBody.position - nextPosition).sqrMagnitude < distanceTolerance)
+            if ((rigidBody.position - nextPosition).sqrMagnitude < distanceTolerance)
             {
-                //then target was reached, get next target
-                pathProvider.GetNextPoint();
+                rigidBody.transform.LookAt(rigidBody.transform.position + rigidBody.transform.forward);
+
+                if (changeTargetBasedOnProximity)
+                    //then target was reached, get next target
+                    pathProvider.GetNextPoint();
             }
         }
 

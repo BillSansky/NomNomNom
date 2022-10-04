@@ -31,6 +31,10 @@ namespace Nom_Nom_Nom.Path_Finding
         void OnEnable()
         {
             pool = controller.ObjectPool;
+            if (!pool)
+                return;
+
+
             pool.OnNewObjectCreated.AddListener(RegeneratePlaceablePositions);
             pool.OnNewObjectPooled.AddListener(RegeneratePlaceablePositions);
             RegeneratePlaceablePositions();
@@ -38,6 +42,9 @@ namespace Nom_Nom_Nom.Path_Finding
 
         private void OnDisable()
         {
+            if (!pool)
+                return;
+
             pool.OnNewObjectCreated.RemoveListener(RegeneratePlaceablePositions);
             pool.OnNewObjectPooled.RemoveListener(RegeneratePlaceablePositions);
         }
