@@ -50,7 +50,7 @@ namespace Nom_Nom_Nom.Controller
                 return;
 
 
-            placeableObjectToMove.NotifyDragDone();
+            placeableObjectToMove.NotifyPlacementDone();
             placeableObjectToMove = null;
             controllerData.NotifyNoObjectToHandle();
             onDragEnded.Invoke();

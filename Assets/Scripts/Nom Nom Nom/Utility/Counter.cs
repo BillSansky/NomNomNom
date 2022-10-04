@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Nom_Nom_Nom.Utility
@@ -8,6 +9,7 @@ namespace Nom_Nom_Nom.Utility
         [SerializeField] private int countTo;
         [SerializeField] private int initialCount;
 
+        [ShowInInspector,ReadOnly,BoxGroup("Status")]
         private int currentCount;
 
         [SerializeField] private UnityEvent onCountDone;

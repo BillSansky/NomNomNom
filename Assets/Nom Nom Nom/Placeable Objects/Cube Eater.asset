@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0efd3b2a6581c67478a45fc2b5297b33, type: 3}
   m_Name: Cube Eater
   m_EditorClassIdentifier: 
-  objectName: Careless Cube Eater
+  objectName: Careless Eater
   placeableObject: {fileID: 3083545228887258015, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
   uiRepresentation: {fileID: 2800000, guid: 39b36144eefd7fc47b8a2ccfad2bb569, type: 3}

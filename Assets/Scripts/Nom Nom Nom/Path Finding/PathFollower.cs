@@ -15,12 +15,23 @@ namespace Nom_Nom_Nom.Path_Finding
 
         [SerializeField] private float speed = 10;
 
+        private float originalSpeed;
+        [SerializeField] private float maxSpeed = 20;
+
         [SerializeField] private float timePauseOnTargetReach = 0.65f;
 
         [ShowInInspector, ReadOnly, BoxGroup("Status")]
         private bool isWaiting = false;
 
         [SerializeField] private bool changeTargetBasedOnProximity;
+
+        [ShowIf("changeTargetBasedOnProximity")] [SerializeField]
+        private float distanceTolerance = 1f;
+
+        private void Awake()
+        {
+            originalSpeed = speed;
+        }
 
         private void OnEnable()
         {
@@ -43,9 +54,23 @@ namespace Nom_Nom_Nom.Path_Finding
         }
 
 
-        public void MultiplySpeed(float mutliplayer)
+        public void MultiplySpeed(float mutliplier)
         {
-            speed *= mutliplayer;
+            if (Mathf.Approximately(speed, originalSpeed))
+                StartCoroutine(ReduceSpeedToOriginalOverTime());
+
+            speed *= mutliplier;
+            speed = Mathf.Min(speed, maxSpeed);
+        }
+
+        private IEnumerator ReduceSpeedToOriginalOverTime()
+        {
+            yield return new WaitForSeconds(1.5f);
+            while (!Mathf.Approximately(speed, originalSpeed))
+            {
+                speed = Mathf.Lerp(speed, originalSpeed, Time.deltaTime);
+                yield return new WaitForEndOfFrame();
+            }
         }
 
         public void FixedUpdate()
@@ -53,43 +78,55 @@ namespace Nom_Nom_Nom.Path_Finding
             if (isWaiting)
                 return;
 
-            Vector3 nextPosition = pathProvider.GetCurrentPoint();
+            if (!pathProvider.IsCurrentPointValid())
+            {
+                StartCoroutine(WaitUntilTargetValid());
+                return;
+            }
+
+            Vector3 nextPosition = pathProvider.GetCurrentPointPosition();
 
             Vector3 distance = nextPosition - rigidBody.position;
             Vector3 speedToAdd = (distance.normalized *
                                   (Mathf.Min(speed * Time.deltaTime, distance.magnitude)));
 
-            rigidBody.transform.LookAt(nextPosition, Vector3.up);
+            Vector3 lookAt = nextPosition + distance;
+            lookAt.y = transform.position.y;
+            rigidBody.transform.LookAt(lookAt, Vector3.up);
             //allow to go down, but not up
             speedToAdd.y = Mathf.Min(speedToAdd.y, 0);
             rigidBody.position += speedToAdd;
 
             if (changeTargetBasedOnProximity &&
-                Mathf.Approximately((rigidBody.position - nextPosition).sqrMagnitude, 0))
+                (rigidBody.position - nextPosition).sqrMagnitude < distanceTolerance)
             {
                 //then target was reached, get next target
-                StartCoroutine(ChangeTargetAfterSomeTime());
+                pathProvider.GetNextPoint();
             }
         }
 
         public void ChangeTarget()
         {
+            if (!enabled)
+                return;
             //then target was reached, get next target
-            StartCoroutine(ChangeTargetAfterSomeTime());
+            StartCoroutine(WaitUntilTargetValid());
         }
 
-        private IEnumerator ChangeTargetAfterSomeTime()
+        private IEnumerator WaitUntilTargetValid()
         {
             yield return WaitUntilPointAvailable();
+            isWaiting = true;
             yield return new WaitForSeconds(timePauseOnTargetReach);
+            isWaiting = false;
         }
 
         private IEnumerator WaitUntilPointAvailable()
         {
             isWaiting = true;
-            rigidBody.isKinematic = false;
 
-            while (!pathProvider.HasNextPoint())
+
+            while (!pathProvider.IsCurrentPointValid())
             {
                 //keep on waiting until next point available
                 yield return new WaitForEndOfFrame();
@@ -97,13 +134,13 @@ namespace Nom_Nom_Nom.Path_Finding
 
             isWaiting = false;
             rigidBody.isKinematic = true;
-            pathProvider.GetNextPoint();
         }
 
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawSphere(pathProvider.GetCurrentPoint(), 1);
+            if (pathProvider.IsCurrentPointValid())
+                Gizmos.DrawSphere(pathProvider.GetCurrentPointPosition(), 1);
         }
     }
 }

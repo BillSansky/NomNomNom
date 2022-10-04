@@ -4,7 +4,6 @@ using System.Linq;
 using Nom_Nom_Nom.Placeable;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Nom_Nom_Nom.Trigger
 {
@@ -12,6 +11,8 @@ namespace Nom_Nom_Nom.Trigger
     public class PlaceableObjectDetector : MonoBehaviour
     {
         [SerializeField] private PlaceableObjectEvent onPlaceableObjectDetected;
+
+        [SerializeField] private List<PlaceableObject> objectsToExclude;
 
         [SerializeField] [AssetList] private List<PlaceableObject> shortListTypesToDetect;
 
@@ -44,13 +45,12 @@ namespace Nom_Nom_Nom.Trigger
             if (!placeable)
                 return;
 
-            if (preventRedetection && lastDetected == placeable)
+            if (preventRedetection && lastDetected == placeable || objectsToExclude.Contains(placeable))
                 return;
-
-            lastDetected = placeable;
-
+            
             if (shortListTypesToDetect.Count == 0 || shortListTypesToDetect.Any(_ => _.PoolId == placeable.PoolId))
             {
+                lastDetected = placeable;
                 onPlaceableObjectDetected.Invoke(placeable);
             }
         }

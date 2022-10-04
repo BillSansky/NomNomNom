@@ -199,18 +199,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5705252940335603075}
-        m_TargetAssemblyTypeName: Nom_Nom_Nom.Path_Finding.PathFollower, Assembly-CSharp
-        m_MethodName: ChangeTarget
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  objectsToExclude: []
   shortListTypesToDetect:
   - {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
   useTrigger: 1
@@ -321,8 +310,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 10.763667}
+  m_Center: {x: 0, y: 0, z: -3.5016174}
 --- !u!114 &5063611125872171886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,18 +364,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5705252940335603075}
-        m_TargetAssemblyTypeName: Nom_Nom_Nom.Path_Finding.PathFollower, Assembly-CSharp
-        m_MethodName: ChangeTarget
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  objectsToExclude: []
   shortListTypesToDetect:
   - {fileID: 7585968697716178521, guid: 10a2bf15b4c20694f8a3dc5770e304b6, type: 3}
   useTrigger: 1
@@ -682,9 +660,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 3083545228887258012}
   pathProvider: {fileID: 3206934625164135523}
-  speed: 4
-  timePauseOnTargetReach: 0.65
+  speed: 6
+  maxSpeed: 20
+  timePauseOnTargetReach: 0.3
   changeTargetBasedOnProximity: 0
+  distanceTolerance: 1
 --- !u!1 &5851263905369661636
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,6 +757,7 @@ GameObject:
   - component: {fileID: 2441003278722704032}
   - component: {fileID: 6787880600313905068}
   - component: {fileID: 8228498724821827117}
+  - component: {fileID: 7344367480271334293}
   m_Layer: 0
   m_Name: Tail
   m_TagString: Untagged
@@ -1053,6 +1034,20 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   waitForOneFrame: 0
+--- !u!114 &7344367480271334293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5895383778782919401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe187350f76b402bbc241ab6762dcbcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  refCollider: {fileID: 11400000, guid: 78be9ed776ee729478a13ef50829ad09, type: 2}
+  boingBone: {fileID: 6787880600313905068}
 --- !u!1 &6131630279779036183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,18 +1257,6 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 5705252940335603075}
         m_TargetAssemblyTypeName: Nom_Nom_Nom.Path_Finding.PathFollower, Assembly-CSharp
-        m_MethodName: ChangeTarget
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5705252940335603075}
-        m_TargetAssemblyTypeName: Nom_Nom_Nom.Path_Finding.PathFollower, Assembly-CSharp
         m_MethodName: MultiplySpeed
         m_Mode: 4
         m_Arguments:
@@ -1284,6 +1267,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  objectsToExclude: []
   shortListTypesToDetect:
   - {fileID: 8509613031490187923, guid: c9cc2339dbc10d94687f757cfdbdf30a, type: 3}
   useTrigger: 1
@@ -1726,7 +1710,7 @@ PrefabInstance:
     - target: {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
       propertyPath: OnPlaceableCreated.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 5851263905369661636}
+      objectReference: {fileID: 6258187326904307624}
     - target: {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
       propertyPath: OnPlaceableCreated.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
@@ -1738,6 +1722,10 @@ PrefabInstance:
     - target: {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
       propertyPath: OnPlaceableCreated.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: ResetChainToCount
+      objectReference: {fileID: 0}
+    - target: {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
+      propertyPath: OnPlaceableCreated.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: ResetCount
       objectReference: {fileID: 0}
     - target: {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
       propertyPath: OnDragEnded.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -1757,7 +1745,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
       propertyPath: OnPlaceableCreated.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
-      value: Nom_Nom_Nom.Utility.ChainInstantiator, Assembly-CSharp
+      value: Nom_Nom_Nom.Utility.Counter, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
       propertyPath: OnPlaceableCreated.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_IntArgument
@@ -1781,6 +1769,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
       propertyPath: OnPlaceableCreated.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
+      propertyPath: OnPlaceableCreated.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1409574831696176485, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}

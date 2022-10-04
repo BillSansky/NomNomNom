@@ -79,6 +79,10 @@ PrefabInstance:
       propertyPath: archetypePlaceableToFollow.Array.data[1]
       value: 
       objectReference: {fileID: 8509613031490187923, guid: c9cc2339dbc10d94687f757cfdbdf30a, type: 3}
+    - target: {fileID: 5705252940335603075, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
+      propertyPath: timePauseOnTargetReach
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8234753783107752332, guid: 1abe2674dc740244dad597bea54ee37a, type: 3}
       propertyPath: toInstantiate
       value: 

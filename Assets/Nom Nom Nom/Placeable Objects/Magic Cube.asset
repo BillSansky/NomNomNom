@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0efd3b2a6581c67478a45fc2b5297b33, type: 3}
   m_Name: Magic Cube
   m_EditorClassIdentifier: 
-  objectName: Magic Cube
+  objectName: Magic
   placeableObject: {fileID: 8509613031490187923, guid: c9cc2339dbc10d94687f757cfdbdf30a, type: 3}
   uiRepresentation: {fileID: 2800000, guid: fe6567b39a202074197d60097e5f89a3, type: 3}

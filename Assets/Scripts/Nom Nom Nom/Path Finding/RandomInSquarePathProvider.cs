@@ -21,19 +21,23 @@ namespace Nom_Nom_Nom.Path_Finding
             Handles.color = Color.red;
             Handles.DrawDottedLine(squareCenter, squareCenter + Vector3.right * height * .5f, 1);
             Handles.DrawDottedLine(squareCenter, squareCenter - Vector3.right * height * .5f, 1);
-            Handles.DrawSolidRectangleWithOutline(new Rect(squareCenter, new Vector2(width, height)), Color.grey,
-                Color.green);
+            SceneView.RepaintAll();
         }
 
-        public override Vector3 GetCurrentPoint()
+        public override Vector3 GetCurrentPointPosition()
         {
             return currentPoint;
         }
 
         public override void GetNextPoint()
         {
-            currentPoint = squareCenter + new Vector3(UnityEngine.Random.Range(-height, height), 0,
-                UnityEngine.Random.Range(-width, width));
+            currentPoint = squareCenter + new Vector3(UnityEngine.Random.Range(-height*0.5f, height*0.5f), 0,
+                UnityEngine.Random.Range(-width*0.5f, width*0.5f));
+        }
+
+        public override bool IsCurrentPointValid()
+        {
+            return true;
         }
 
         public override bool HasNextPoint()

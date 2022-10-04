@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0efd3b2a6581c67478a45fc2b5297b33, type: 3}
-  m_Name: Smart Cube Eater
+  m_Name: Pinata Cube
   m_EditorClassIdentifier: 
-  objectName: Smart Eater
-  placeableObject: {fileID: 8766844759025042811, guid: d749ed23a981583469c9a3802d1382aa, type: 3}
-  uiRepresentation: {fileID: 2800000, guid: 0f2cacf65a8e458429e17ce99ac759e0, type: 3}
+  objectName: Pinata
+  placeableObject: {fileID: 5001486006212674998, guid: 6a79b6d377e6b4242a666903f6f6b8ac, type: 3}
+  uiRepresentation: {fileID: 2800000, guid: 2579d4c8772249e428e3c3783a9c59b4, type: 3}

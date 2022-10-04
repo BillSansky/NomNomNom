@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0efd3b2a6581c67478a45fc2b5297b33, type: 3}
-  m_Name: Smart Cube Eater
+  m_Name: Cube Layer
   m_EditorClassIdentifier: 
-  objectName: Smart Eater
-  placeableObject: {fileID: 8766844759025042811, guid: d749ed23a981583469c9a3802d1382aa, type: 3}
-  uiRepresentation: {fileID: 2800000, guid: 0f2cacf65a8e458429e17ce99ac759e0, type: 3}
+  objectName: Egg Layer
+  placeableObject: {fileID: 3083545228887258015, guid: ad52d12e73923234db0cb102994fd91d, type: 3}
+  uiRepresentation: {fileID: 2800000, guid: d6b48f5b977452344817d2606ed56fbc, type: 3}

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEngine;
@@ -20,6 +18,8 @@ namespace Nom_Nom_Nom.Placeable
             set => poolId = value;
         }
 
+        public Rigidbody Rb => rb;
+
         private Rigidbody rb;
 
         public UnityEvent OnDragStarted;
@@ -37,20 +37,20 @@ namespace Nom_Nom_Nom.Placeable
 
         public void NotifyBeingDragged()
         {
-            rb.isKinematic = true;
+            Rb.isKinematic = true;
             OnDragStarted.Invoke();
         }
 
-        public void NotifyDragDone()
+        public void NotifyPlacementDone()
         {
-            rb.isKinematic = false;
+            Rb.isKinematic = false;
             OnDragEnded.Invoke();
         }
 
         public void NotifyPooled()
         {
-            rb.Sleep();
-            rb.isKinematic = true;
+            Rb.Sleep();
+            Rb.isKinematic = true;
             gameObject.SetActive(false);
         }
 
@@ -65,8 +65,8 @@ namespace Nom_Nom_Nom.Placeable
             poolThatSpawnedMe = poolThatSpawned;
             gameObject.SetActive(true);
             OnPlaceableCreated.Invoke(this);
-            rb.Sleep();
-            rb.isKinematic = true;
+            Rb.Sleep();
+            Rb.isKinematic = true;
         }
     }
 }

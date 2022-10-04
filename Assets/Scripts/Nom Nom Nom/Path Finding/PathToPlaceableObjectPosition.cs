@@ -45,12 +45,35 @@ namespace Nom_Nom_Nom.Path_Finding
         private void RegeneratePlaceablePositions()
         {
             placeableObjectShortlist =
-                pool.ActiveObjects.Where(_ => archetypePlaceableToFollow.Any(arch => arch.PoolId == _.PoolId))
+                pool.ActiveObjects.Where(_ => _ != placeableObjectToReach && _.gameObject.activeInHierarchy &&
+                                              archetypePlaceableToFollow.Any(arch => arch.PoolId == _.PoolId))
                     .ToList();
+
+            foreach (var placeableObject in placeableObjectShortlist)
+            {
+                placeableObject.OnPlaceableDestroyed.AddListener(RemovePlaceableFromList);
+            }
+
+            if (!placeableObjectToReach)
+                GetNextPoint();
+        }
+
+        private void RemovePlaceableFromList(PlaceableObject destroyedPlaceable)
+        {
+            destroyedPlaceable.OnPlaceableDestroyed.RemoveListener(RemovePlaceableFromList);
+
+            if (placeableObjectToReach == destroyedPlaceable)
+            {
+                GetNextPoint();
+            }
+            else
+            {
+                placeableObjectShortlist.Remove(destroyedPlaceable);
+            }
         }
 
 
-        public override Vector3 GetCurrentPoint()
+        public override Vector3 GetCurrentPointPosition()
         {
             return placeableObjectToReach.transform.position;
         }
@@ -65,15 +88,21 @@ namespace Nom_Nom_Nom.Path_Finding
 
             if (alwaysPickNearestToTransform)
             {
-                placeableObjectToReach = placeableObjectShortlist.Where(_=>_.gameObject.activeInHierarchy)
+                placeableObjectToReach = placeableObjectShortlist.Where(_ => _.gameObject.activeInHierarchy)
                     .OrderBy(_ => (_.transform.position - refTransform.position).sqrMagnitude).First();
             }
             else
             {
                 placeableObjectToReach =
                     placeableObjectShortlist[UnityEngine.Random.Range(0, placeableObjectShortlist.Count)];
-                placeableObjectShortlist.Remove(placeableObjectToReach);
             }
+
+            placeableObjectShortlist.Remove(placeableObjectToReach);
+        }
+
+        public override bool IsCurrentPointValid()
+        {
+            return placeableObjectToReach;
         }
 
         public override bool HasNextPoint()
