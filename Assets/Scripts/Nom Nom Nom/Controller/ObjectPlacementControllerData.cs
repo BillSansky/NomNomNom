@@ -37,7 +37,15 @@ namespace Nom_Nom_Nom.Controller
             }
 
             currentHandledObject = ObjectPool.CreateNewPlaceable(objID);
+            currentHandledObject.OnPlaceableDestroyed.AddListener(NotifyCurrentPlaceableDestroyed);
             OnNewObjectHandled.Invoke();
+        }
+
+        private void NotifyCurrentPlaceableDestroyed(PlaceableObject placeableObject)
+        {
+            if (placeableObject == currentHandledObject)
+                CancelCurrentObject();
+            placeableObject.OnPlaceableDestroyed.RemoveListener(NotifyCurrentPlaceableDestroyed);
         }
 
         public void CancelCurrentObject()
@@ -48,12 +56,15 @@ namespace Nom_Nom_Nom.Controller
                 return;
             }
 
+            currentHandledObject.OnPlaceableDestroyed.RemoveListener(NotifyCurrentPlaceableDestroyed);
             ObjectPool.PoolExistingPlaceable(currentHandledObject);
+            currentHandledObject = null;
             OnNoObjectHandled.Invoke();
         }
 
         public void NotifyNoObjectToHandle()
         {
+            currentHandledObject.OnPlaceableDestroyed.RemoveListener(NotifyCurrentPlaceableDestroyed);
             currentHandledObject = null;
             OnNoObjectHandled.Invoke();
         }

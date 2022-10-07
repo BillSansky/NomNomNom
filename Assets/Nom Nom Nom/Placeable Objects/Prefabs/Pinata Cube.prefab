@@ -25,12 +25,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4961719825126906306}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.85, z: 0}
+  m_LocalPosition: {x: 0.29225364, y: 1.2212732, z: -0.71440053}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5001486006212674996}
-  m_RootOrder: 2
+  m_Father: {fileID: 4541553992887331827}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3157643414870332037
 MonoBehaviour:
@@ -177,12 +177,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6788092872140813935}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.80999947, z: 0}
+  m_LocalPosition: {x: 0.29225364, y: -1.4387263, z: -0.71440053}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5001486006212674996}
-  m_RootOrder: 4
+  m_Father: {fileID: 4541553992887331827}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5534705336075013589
 MonoBehaviour:
@@ -273,7 +273,7 @@ MonoBehaviour:
   autoPlay: 0
   useTargetAsV3: 0
   endValueFloat: 1
-  endValueV3: {x: 0.5, y: 0.5, z: 0.5}
+  endValueV3: {x: 0.5, y: 0, z: 0.5}
   endValueV2: {x: 0, y: 0}
   endValueColor: {r: 1, g: 1, b: 1, a: 1}
   endValueString: 
@@ -317,12 +317,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7660881403727130308}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.80999947, z: 0}
+  m_LocalPosition: {x: 0.29225364, y: -1.4387263, z: -0.71440053}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5001486006212674996}
-  m_RootOrder: 3
+  m_Father: {fileID: 4541553992887331827}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6493045704324677667
 MonoBehaviour:
@@ -353,6 +353,138 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &8746774514261650991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4541553992887331827}
+  m_Layer: 0
+  m_Name: Hit Logic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4541553992887331827
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8746774514261650991}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.29225364, y: 0.62872684, z: 0.71440053}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1583847952449694674}
+  - {fileID: 2250591661718510061}
+  - {fileID: 6859529781907258446}
+  - {fileID: 7869513745903304914}
+  m_Father: {fileID: 5001486006212674996}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9190051404188175386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6859529781907258446}
+  - component: {fileID: 8901896549693531976}
+  - component: {fileID: 3975715638690101224}
+  m_Layer: 0
+  m_Name: Hit Detector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6859529781907258446
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9190051404188175386}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.29225, y: -0.64198, z: -0.71459}
+  m_LocalScale: {x: 1.0265, y: 1.0265, z: 1.0265}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4541553992887331827}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8901896549693531976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9190051404188175386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70d201554af547639954af32cf323bc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnCollisionEntered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5534705336075013589}
+        m_TargetAssemblyTypeName: DG.Tweening.DOTweenAnimation, Assembly-CSharp-firstpass
+        m_MethodName: DORestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6493045704324677667}
+        m_TargetAssemblyTypeName: Nom_Nom_Nom.Utility.Counter, Assembly-CSharp
+        m_MethodName: Decrement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnCollisionExited:
+    m_PersistentCalls:
+      m_Calls: []
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 951
+  useTrigger: 1
+  collidersToIgnore:
+  - {fileID: 948073393276607488}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!65 &3975715638690101224
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9190051404188175386}
+  m_Material: {fileID: 13400000, guid: 34f0877abb0c1454f8ff828011c99e97, type: 2}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0382968, y: 1.0365947, z: 1.0292835}
+  m_Center: {x: -0.010291368, y: 0.49967033, z: -0.003157914}
 --- !u!1001 &6261984601660465362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -524,7 +656,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1409574831696176485, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
   m_PrefabInstance: {fileID: 6261984601660465362}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &3578330703446878862
+--- !u!65 &948073393276607488
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -535,47 +667,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1022273, y: 1.0160117, z: 0.9881172}
+  m_Size: {x: 1.0177137, y: 1.0160117, z: 0.9881172}
   m_Center: {x: 0.000000059604645, y: 0.49967027, z: 0.007133484}
---- !u!114 &8949298121257622240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5001486006212674999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70d201554af547639954af32cf323bc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnCollisionDetected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5534705336075013589}
-        m_TargetAssemblyTypeName: DG.Tweening.DOTweenAnimation, Assembly-CSharp-firstpass
-        m_MethodName: DORestart
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6493045704324677667}
-        m_TargetAssemblyTypeName: Nom_Nom_Nom.Utility.Counter, Assembly-CSharp
-        m_MethodName: Decrement
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &5001486007134852212 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1409574830741402790, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}

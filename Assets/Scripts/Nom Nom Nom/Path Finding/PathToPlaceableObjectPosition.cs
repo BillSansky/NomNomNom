@@ -47,10 +47,33 @@ namespace Nom_Nom_Nom.Path_Finding
 
             pool.OnNewObjectCreated.RemoveListener(RegeneratePlaceablePositions);
             pool.OnNewObjectPooled.RemoveListener(RegeneratePlaceablePositions);
+
+            ClearPathAndCurrentPlaceable();
+        }
+
+        private void ClearPathAndCurrentPlaceable()
+        {
+            if (placeableObjectToReach)
+                placeableObjectToReach.OnPlaceableDestroyed.RemoveListener(RemovePlaceableFromList);
+
+            placeableObjectToReach = null;
+            ClearPath();
+        }
+
+        private void ClearPath()
+        {
+            foreach (var placeableObject in placeableObjectShortlist)
+            {
+                placeableObject.OnPlaceableDestroyed.RemoveListener(RemovePlaceableFromList);
+            }
+
+            placeableObjectShortlist.Clear();
         }
 
         private void RegeneratePlaceablePositions()
         {
+            ClearPath();
+
             placeableObjectShortlist =
                 pool.ActiveObjects.Where(_ => _ != placeableObjectToReach && _.gameObject.activeInHierarchy &&
                                               archetypePlaceableToFollow.Any(arch => arch.PoolId == _.PoolId))

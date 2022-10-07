@@ -7,7 +7,7 @@ namespace Nom_Nom_Nom.Placeable
     [CreateAssetMenu(fileName = "Placeable Object Collection", menuName = "Nom Nom Nom/Placeable Object Collection")]
     public class PlaceableObjectCollection : ScriptableObject
     {
-        [SerializeField][AssetList()] private List<PlaceableObjectData> placeableObjects;
+        [SerializeField] private List<PlaceableObjectData> placeableObjects;
         public IEnumerable<PlaceableObjectData> PlaceableObjets => placeableObjects;
     }
 }

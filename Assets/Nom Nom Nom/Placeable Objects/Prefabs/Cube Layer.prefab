@@ -1089,6 +1089,9 @@ MonoBehaviour:
   forceRange: {x: 91.34388, y: 190.18016}
   controllerData: {fileID: 11400000, guid: feec8264d20de574eb8ffa1dadc47de6, type: 2}
   spawnTransform: {fileID: 7008634349536286570}
+  OnSpawnDone:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6513987512709878848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3868,7 +3871,7 @@ PrefabInstance:
     - target: {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
       propertyPath: OnPlaceableCreated.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 5851263905369661636}
+      objectReference: {fileID: 6258187326904307624}
     - target: {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
       propertyPath: OnPlaceableCreated.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
@@ -3880,6 +3883,10 @@ PrefabInstance:
     - target: {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
       propertyPath: OnPlaceableCreated.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: ResetChainToCount
+      objectReference: {fileID: 0}
+    - target: {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
+      propertyPath: OnPlaceableCreated.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: ResetCount
       objectReference: {fileID: 0}
     - target: {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
       propertyPath: OnDragEnded.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -3894,12 +3901,16 @@ PrefabInstance:
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
+      propertyPath: OnDragStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
       propertyPath: OnPlaceableCreated.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: Nom_Nom_Nom.Utility.ChainInstantiator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
       propertyPath: OnPlaceableCreated.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
-      value: Nom_Nom_Nom.Utility.ChainInstantiator, Assembly-CSharp
+      value: Nom_Nom_Nom.Utility.Counter, NomnomAsmb
       objectReference: {fileID: 0}
     - target: {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
       propertyPath: OnPlaceableCreated.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_IntArgument
@@ -3923,6 +3934,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
       propertyPath: OnPlaceableCreated.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1409574831696176484, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
+      propertyPath: OnPlaceableCreated.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1409574831696176485, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
@@ -3972,6 +3987,10 @@ PrefabInstance:
     - target: {fileID: 1409574831696176486, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8013974549479517964, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}
+      propertyPath: SignalEvents.Array.data[0].OnSignalReceived.m_PersistentCalls.m_Calls.Array.size
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1409574830741402785, guid: 3999f2f19a5fc8e4da354696c846844c, type: 3}

@@ -20,10 +20,11 @@ namespace Nom_Nom_Nom.Utility
 
         public void ResetChainToCount(int count)
         {
-            for (int i = chainLinks.Count() - 1; i >= 0; i--)
-            {
-                RemoveLastChainLink();
-            }
+            if (chainLinks.Count > 0)
+                for (int i = chainLinks.Count - 1; i >= 0; i--)
+                {
+                    RemoveLastChainLink();
+                }
 
             for (int i = 0; i < count; i++)
             {

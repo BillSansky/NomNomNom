@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 namespace Nom_Nom_Nom.Path_Finding
@@ -11,6 +12,11 @@ namespace Nom_Nom_Nom.Path_Finding
         [SerializeField] private float height = 10;
 
         private Vector3 currentPoint;
+
+        private void OnEnable()
+        {
+            GetNextPoint();
+        }
 
         private void OnDrawGizmosSelected()
         {

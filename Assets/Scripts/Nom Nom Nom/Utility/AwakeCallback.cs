@@ -6,6 +6,17 @@ using UnityEngine.Events;
 
 namespace Nom_Nom_Nom.Utility
 {
+    public class BoundingBoxLimit : MonoBehaviour
+    {
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.activeInHierarchy)
+            {
+                gameObject.transform.position = Vector3.zero;
+            }
+        }
+    }
+
     public class AwakeCallback : MonoBehaviour
     {
         public UnityEvent OnAwake;

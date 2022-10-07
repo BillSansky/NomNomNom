@@ -21,8 +21,7 @@ namespace Nom_Nom_Nom.Placeable
         private PlaceableObject placeableObject;
 
         public PlaceableObject PlaceableObject => placeableObject;
-
-
+        
         [SerializeField] private Texture2D uiRepresentation;
 
         public Texture2D UIRepresentation => uiRepresentation;

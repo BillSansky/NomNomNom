@@ -34,6 +34,12 @@ namespace Nom_Nom_Nom.Path_Finding
 
         private void OnEnable()
         {
+            if (pathProvider.IsCurrentPointValid())
+            {
+                rigidBody.isKinematic = true;
+                return;
+            }
+
             if (pathProvider.HasNextPoint())
             {
                 rigidBody.isKinematic = true;
@@ -48,14 +54,14 @@ namespace Nom_Nom_Nom.Path_Finding
         private void OnDisable()
         {
             isWaiting = false;
-            rigidBody.isKinematic = true;
+            rigidBody.isKinematic = false;
             StopAllCoroutines();
         }
 
 
         public void MultiplySpeed(float mutliplier)
         {
-            if (Mathf.Approximately(speed, originalSpeed))
+            if (enabled && gameObject.activeInHierarchy && Mathf.Approximately(speed, originalSpeed))
                 StartCoroutine(ReduceSpeedToOriginalOverTime());
 
             speed *= mutliplier;
@@ -72,6 +78,8 @@ namespace Nom_Nom_Nom.Path_Finding
             }
         }
 
+        private static int failSafeYDistance = 1000;
+
         public void FixedUpdate()
         {
             if (isWaiting)
@@ -85,21 +93,27 @@ namespace Nom_Nom_Nom.Path_Finding
 
             Vector3 nextPosition = pathProvider.GetCurrentPointPosition();
 
-            //ignore cubes that are likely falling for now (+ some safety amount)
-            if (nextPosition.y > rigidBody.position.y + 1f)
-                return;
+            Vector3 distance = nextPosition - rigidBody.transform.position;
 
+            if (MathF.Abs(distance.y) > failSafeYDistance)
+            {
+                pathProvider.GetNextPoint();
+            }
 
-            Vector3 distance = nextPosition - rigidBody.position;
             Vector3 speedToAdd = (distance.normalized *
                                   (Mathf.Min(speed * Time.deltaTime, distance.magnitude)));
 
             Vector3 lookAt = nextPosition + distance;
-            lookAt.y = transform.position.y;
-            rigidBody.transform.LookAt(lookAt, Vector3.up);
-            rigidBody.position += speedToAdd;
 
-            if ((rigidBody.position - nextPosition).sqrMagnitude < distanceTolerance)
+            var position = rigidBody.transform.position;
+            lookAt.y = position.y;
+            rigidBody.transform.LookAt(lookAt, Vector3.up);
+            speedToAdd.y = 0;
+            position += speedToAdd;
+
+            rigidBody.transform.position = position;
+
+            if ((rigidBody.transform.position - nextPosition).sqrMagnitude < distanceTolerance)
             {
                 rigidBody.transform.LookAt(rigidBody.transform.position + rigidBody.transform.forward);
 

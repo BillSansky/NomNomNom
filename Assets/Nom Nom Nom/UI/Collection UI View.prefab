@@ -426,7 +426,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3731532152235818988}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.26365688
+  m_Size: 0.13047405
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1541,7 +1541,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6814684658706046319}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 241.52652, y: 618.60596, z: -3.4077837}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1650,7 +1650,7 @@ MonoBehaviour:
   loopType: 0
   loops: 1
   id: 
-  isRelative: 1
+  isRelative: 0
   isFrom: 0
   isIndependentUpdate: 0
   autoKill: 0
@@ -1658,13 +1658,13 @@ MonoBehaviour:
   isActive: 1
   isValid: 1
   target: {fileID: 3731532151674381479}
-  animationType: 2
-  targetType: 11
+  animationType: 1
+  targetType: 5
   forcedTargetType: 0
   autoPlay: 1
   useTargetAsV3: 0
   endValueFloat: 0
-  endValueV3: {x: -500, y: 0, z: 0}
+  endValueV3: {x: -200, y: 0, z: 0}
   endValueV2: {x: 0, y: 0}
   endValueColor: {r: 1, g: 1, b: 1, a: 1}
   endValueString: 
@@ -1709,7 +1709,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7092925104143030218}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 241.52652, y: 618.60596, z: -3.4077837}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1818,21 +1818,21 @@ MonoBehaviour:
   loopType: 0
   loops: 1
   id: 
-  isRelative: 1
-  isFrom: 1
+  isRelative: 0
+  isFrom: 0
   isIndependentUpdate: 0
   autoKill: 0
   autoGenerate: 1
   isActive: 1
   isValid: 1
   target: {fileID: 3731532151674381479}
-  animationType: 2
-  targetType: 11
+  animationType: 1
+  targetType: 5
   forcedTargetType: 0
   autoPlay: 1
   useTargetAsV3: 0
   endValueFloat: 0
-  endValueV3: {x: -500, y: 0, z: 0}
+  endValueV3: {x: 0, y: 0, z: 0}
   endValueV2: {x: 0, y: 0}
   endValueColor: {r: 1, g: 1, b: 1, a: 1}
   endValueString: 
